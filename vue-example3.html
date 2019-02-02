@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三课：3小时速成 Vue2.x 核心技术 ---计算属性与侦听器</title>
+    <style>
+        .bg{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello, Vue</h1>
+<div id="app">
+    {{msg}}
+    <p></p>
+    {{msg1}}
+</div>
+
+
+<script src="https://cdn.bootcss.com/vue/2.5.22/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        //el:'.bg',
+        data:{
+            msg: 'hello, my vue!!',
+            another: 'another Hello Vue!!!'
+        },
+        watch:{
+            msg: function (newwval, oldval) {
+                console.log('msg.newwval:'+newwval+" ;"+oldval);
+            }
+        },
+        computed:{
+            msg1: function(){
+                return 'completed:'+this.msg +"," +this.another
+            }
+        }
+    });
+</script>
+</body>
+</html>

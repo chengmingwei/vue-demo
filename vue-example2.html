@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3小时速成 Vue2.x 核心技术 --- Vue模板语法</title>
+    <style>
+        .bg{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello, Vue</h1>
+<div id="app">
+    <div class="bg">
+        {{msg}}
+    </div>
+
+    <div class="bg">
+        {{msg}}
+    </div>
+    <!-- {{}} 直接在HTML中进行表达式计算 -->
+    count:{{count}} && {{(count+1)*10}}
+    <!-- 使用 v-html 直接将html字符串以html代码展示 -->
+    <div v-html="template">
+    </div>
+
+    <!--
+     v-bind 直接将 Vue 的 data 中的属性作为href的值写入
+     :href 是 -bind:href 的简写
+     -->
+    <a v-bind:href="url">百度</a>
+    <a :href="url1">凤凰网</a>
+    <br/>
+
+    <!--
+        v-on:click 绑定到Vue 属性methods 中的 submit 方法
+        @click 是 v-on:click 的缩写
+    -->
+   <!-- <button type="button" v-on:click="submit()">加数字</button>-->
+    <button type="button" @click="submit()">加数字</button>
+</div>
+
+
+<script src="https://cdn.bootcss.com/vue/2.5.22/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        //el:'.bg',
+        data:{
+            msg: 'hello, my vue!!',
+            count: 0,
+            url: 'http://wwww.baidu.com',
+            url1: 'http://www.ifeng.com/',
+            template:'<div>hello template</div>'
+        },
+        methods: {
+            submit: function(){
+                this.count++
+            }
+        }
+    });
+</script>
+</body>
+</html>
