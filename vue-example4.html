@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第四课：3小时速成 Vue2.x 核心技术 ---条件渲染、列表渲染、Class与Style绑定</title>
+    <style>
+        .bg{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello, Vue</h1>
+<div id="app">
+    {{msg}}
+<!-- 条件渲染 v-if v-else-if v-else CODE START -->
+    <div v-if="count < 0">
+        v-if count = {{count}}
+    </div>
+    <div v-else-if="count<0 && count>-5">
+        v-else-if count = {{count}}
+    </div>
+    <div v-else>
+        v-else count = {{count}}
+    </div>
+    <div v-show="count==0">v-show count = {{count}}</div>
+    <!-- 条件渲染 v-if v-else-if v-else CODE END -->
+
+    <!-- 列表渲染 v-for , Class 与 Style 绑定 CODE START -->
+    <div v-for="item in list">
+     <div v-show="item.age > 29"
+          :class="['active','add','more',{'another':item.age<30}]"
+      :style="styleMsg">
+        {{item.name}}
+     </div>
+    </div>
+    <!-- 列表渲染 v-for CODE END -->
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.22/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg: 'hello, my vue!!',
+            count: 0,
+            styleMsg:{
+                color:'red',
+                fontWeight:'bold'
+            },
+            list:[
+                {
+                    name: 'liwei',
+                    age : 29
+                },  {
+                    name: '小张',
+                    age : 30
+                }
+            ]
+        }
+    });
+</script>
+</body>
+</html>
